@@ -5,7 +5,12 @@ class MockedWebsiteTest < Minitest::Test
     refute_nil ::MockedWebsite::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_respond_to_setup_and_teardown
+    app = MockedWebsite.create('http://example.org') do
+      # ...
+    end
+
+    assert app.respond_to?(:setup)
+    assert app.respond_to?(:teardown)
   end
 end
