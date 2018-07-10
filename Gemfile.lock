@@ -1,0 +1,45 @@
+PATH
+  remote: .
+  specs:
+    mocked_website (1.0.0)
+      sinatra (~> 2.0)
+      webmock (~> 3.4)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    hashdiff (0.3.7)
+    minitest (5.11.3)
+    mustermann (1.0.2)
+    public_suffix (3.0.2)
+    rack (2.0.5)
+    rack-protection (2.0.3)
+      rack
+    rake (10.5.0)
+    safe_yaml (1.0.4)
+    sinatra (2.0.3)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.3)
+      tilt (~> 2.0)
+    tilt (2.0.8)
+    webmock (3.4.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  minitest (~> 5.0)
+  mocked_website!
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.2
