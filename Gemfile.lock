@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mocked_website (1.0.0)
+    mocked_website (1.0.1)
       sinatra (~> 2.0)
       webmock (~> 3.4)
 

@@ -12,6 +12,16 @@ class MockedWebsiteTest < Minitest::Test
 
     assert app.respond_to?(:setup)
     assert app.respond_to?(:teardown)
+
+    app = MockedWebsite.create('http://example.org') do
+      def self.teardown
+        :foo
+      end
+    end
+
+    assert app.respond_to?(:setup)
+    assert app.respond_to?(:teardown)
+    assert_equal :foo, app.teardown
   end
 
   def test_pattern

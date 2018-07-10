@@ -22,7 +22,12 @@ module MockedWebsite
     def app.setup
       WebMock::API.stub_request(:any, @pattern).to_rack(@rack_app)
     end
-    def app.teardown
+
+    # Only define teardown if it doesn't already exist,
+    # helps to provide a common API
+    if !app.respond_to?(:teardown)
+      def app.teardown
+      end
     end
 
     return app
