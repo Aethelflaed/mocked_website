@@ -1,8 +1,6 @@
 # MockedWebsite
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mocked_website`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple gem using WebMock and sinatra to easily mock a website
 
 ## Installation
 
@@ -22,7 +20,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+MockedGitlab = MockedWebsite.create('https://git.example.org/api/v4') do
+  cattr_accessor(:projects) do
+    Hash.new{|h, k| h[k] = {name: k}}
+  end
+  cattr_accessor(:issues) do
+    Hash.new{|h, k| h[k] = {id: k}}
+  end
+
+  get '/projects/:group_name/:project_name/issues/:id' do
+    issues[params[:id].to_i].to_json
+  end
+
+  get '/projects/*' do |name|
+    projects[name].to_json
+  end
+end
+
+# Elsewhere
+class MyTest < ActiveSupport::TestCase
+  setup do
+    MockedGitlab.setup
+  end
+  
+  # test the behavior of your app against what you predefine in MockedGitlab
+end
+```
 
 ## Development
 
@@ -32,7 +56,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mocked_website.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Aethelflaed/mocked_website.
 
 ## License
 
