@@ -9,3 +9,5 @@ gem 'minitest'
 
 # Specify your gem's dependencies in mocked_website.gemspec
 gemspec
+
+gem "standard", "~> 1.42"
