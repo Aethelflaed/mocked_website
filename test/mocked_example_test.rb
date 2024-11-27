@@ -15,8 +15,7 @@ class MockedExampleTest < Minitest::Test
   end
 
   def test_foo
-    uri = URI('http://example.org/foo')
-    res = Net::HTTP.get_response(uri)
+    res = Net::HTTP.get_response('example.org', '/foo')
 
     assert Net::HTTPSuccess === res
 
@@ -24,8 +23,7 @@ class MockedExampleTest < Minitest::Test
   end
 
   def test_other
-    uri = URI('http://example.org/bar')
-    res = Net::HTTP.get_response(uri)
+    res = Net::HTTP.get_response('example.org', '/bar')
 
     assert Net::HTTPNotFound === res
   end
